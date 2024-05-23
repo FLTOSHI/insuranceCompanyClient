@@ -9,7 +9,6 @@ public class HTTPService {
     public static OkHttpClient client = new OkHttpClient();
     private final MediaType JSON = MediaType.get("application/json; charset=utf-8");
 
-
     public String get(String url) {
         String result = "";
         Request request = new Request

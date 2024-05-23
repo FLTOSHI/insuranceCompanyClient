@@ -18,7 +18,7 @@ public class ContractService {
     JSONService service = new JSONService();
     ClientProperties properties = new ClientProperties();
     private Type dataType = new TypeToken<DataResponse<ContractEntity>>(){}.getType();
-    private Type listType = new TypeToken<DataResponse<ContractEntity>>(){}.getType();
+    private Type listType = new TypeToken<ListResponse<ContractEntity>>(){}.getType();
 
     public void getAll() {
         ListResponse<ContractEntity> data = new ListResponse<>();
