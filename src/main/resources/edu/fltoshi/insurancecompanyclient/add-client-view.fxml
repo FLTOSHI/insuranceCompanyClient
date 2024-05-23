@@ -2,12 +2,11 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
-<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fltoshi.insurancecompanyclient.controller.AddClientController">
    <children>
@@ -18,24 +17,20 @@
       <Label layoutX="17.0" layoutY="168.0" text="Мед." />
       <Label layoutX="15.0" layoutY="204.0" text="Имуществ." />
       <Label layoutX="17.0" layoutY="239.0" text="Жизни" />
-      <ChoiceBox fx:id="ClientOsagoInsuranceCombo" layoutX="139.0" layoutY="128.0" prefWidth="150.0" />
-      <ChoiceBox fx:id="ClientLifeInsuranceCombo" layoutX="139.0" layoutY="235.0" prefWidth="150.0" />
-      <ChoiceBox fx:id="ClientPropertyInsuranceCombo" layoutX="140.0" layoutY="200.0" prefWidth="150.0" />
-      <ChoiceBox fx:id="ClientMedicalInsuranceCombo" layoutX="139.0" layoutY="164.0" prefWidth="150.0" />
       <TextField fx:id="ClientLastnameField" layoutX="140.0" layoutY="21.0" />
       <TextField fx:id="ClientFirstnameField" layoutX="140.0" layoutY="49.0" />
       <TextField fx:id="ClientSurnameField" layoutX="140.0" layoutY="78.0" />
       <ListView fx:id="ClientView" layoutX="366.0" layoutY="10.0" prefHeight="380.0" prefWidth="340.0" />
       <ButtonBar layoutY="350.0" prefHeight="40.0" prefWidth="350.0">
         <buttons>
-          <Button fx:id="AddButton" mnemonicParsing="false" text="Добавить" />
-            <Button fx:id="EditButton" mnemonicParsing="false" text="Изменить" />
-            <Button fx:id="DeleteButton" mnemonicParsing="false" text="Удалить" />
-            <Button fx:id="ClientRecieveButton" mnemonicParsing="false" onAction="#ReceiveClientData" prefHeight="25.0" prefWidth="148.0" text="ПОЛУЧИТЬ">
-               <font>
-                  <Font size="11.0" />
-               </font></Button>
+          <Button fx:id="AddButton" mnemonicParsing="false" onAction="#AddAction" text="Добавить" />
+            <Button fx:id="EditButton" mnemonicParsing="false" onAction="#EditAction" text="Изменить" />
+            <Button fx:id="DeleteButton" mnemonicParsing="false" onAction="#DeleteAction" text="Удалить" />
         </buttons>
       </ButtonBar>
+      <ComboBox fx:id="ClientOsagoCombo" layoutX="140.0" layoutY="128.0" prefWidth="150.0" />
+      <ComboBox fx:id="ClientMedicalCombo" layoutX="140.0" layoutY="164.0" prefWidth="150.0" />
+      <ComboBox fx:id="ClientPropertyCombo" layoutX="140.0" layoutY="200.0" prefWidth="150.0" />
+      <ComboBox fx:id="ClientLifeCombo" layoutX="140.0" layoutY="235.0" prefWidth="150.0" />
    </children>
 </AnchorPane>

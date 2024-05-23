@@ -50,9 +50,9 @@
          <bottom>
             <ButtonBar prefHeight="49.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
                <buttons>
-                  <Button fx:id="AddButton" mnemonicParsing="false" text="Добавить" />
+                  <Button fx:id="AddButton" mnemonicParsing="false" onAction="#AddNewClientAction" text="Добавить" />
                   <Button fx:id="EditButton" mnemonicParsing="false" text="Изменить" />
-                  <Button fx:id="DeleteButton" mnemonicParsing="false"  text="Удалить" />
+                  <Button fx:id="DeleteButton" mnemonicParsing="false" text="Удалить" />
                </buttons>
             </ButtonBar>
          </bottom>

@@ -1,8 +1,8 @@
 package edu.fltoshi.insurancecompanyclient.controller;
 
+import edu.fltoshi.insurancecompanyclient.MainApplication;
 import edu.fltoshi.insurancecompanyclient.entity.ClientEntity;
 import edu.fltoshi.insurancecompanyclient.service.ClientService;
-import edu.fltoshi.insurancecompanyclient.service.HTTPService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -14,17 +14,17 @@ public class MainController {
     ClientService service = new ClientService();
 
     @FXML
-    private void initialize(){
+    private void initialize() {
         //получаем все книги с сервера
         service.getAll();
         //связываем поля таблицы со столбцами
-        ClientLastnameColumn.setCellValueFactory(new PropertyValueFactory<ClientEntity, String>("lastname"));
-        ClientNameColumn.setCellValueFactory(new PropertyValueFactory<ClientEntity, String>("name"));
-        ClientSurnameColumn.setCellValueFactory(new PropertyValueFactory<ClientEntity, String>("surname"));
-        ClientOSAGOColumn.setCellValueFactory(new PropertyValueFactory<ClientEntity, String>("osago"));
-        ClientPropertyColumn.setCellValueFactory(new PropertyValueFactory<ClientEntity, String>("property"));
-        ClientMedicalColumn.setCellValueFactory(new PropertyValueFactory<ClientEntity, String>("medical"));
-        ClientLifeColumn.setCellValueFactory(new PropertyValueFactory<ClientEntity, String>("life"));
+        ClientLastnameColumn.setCellValueFactory(new PropertyValueFactory<>("lastname"));
+        ClientNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        ClientSurnameColumn.setCellValueFactory(new PropertyValueFactory<>("surname"));
+        ClientOSAGOColumn.setCellValueFactory(new PropertyValueFactory<>("osago"));
+        ClientPropertyColumn.setCellValueFactory(new PropertyValueFactory<>("property"));
+        ClientMedicalColumn.setCellValueFactory(new PropertyValueFactory<>("medical"));
+        ClientLifeColumn.setCellValueFactory(new PropertyValueFactory<>("life"));
 
         ClientTable.setItems(service.getData());
     }
@@ -57,8 +57,14 @@ public class MainController {
     private Button AddButton;
 
     @FXML
-    private Button EditButton;
-
-    @FXML
-    private Button DeleteButton;
+    void AddNewClientAction(ActionEvent event) {
+        MainApplication.showClientDialog();
+    }
+    //    @FXML
+//    private Button EditButton;
+//
+//    @FXML
+//    private Button DeleteButton;
 }
+
+

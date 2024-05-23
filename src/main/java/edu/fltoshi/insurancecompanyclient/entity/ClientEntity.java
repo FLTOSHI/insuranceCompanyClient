@@ -1,15 +1,13 @@
 package edu.fltoshi.insurancecompanyclient.entity;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class ClientEntity {
     private Long id;
     private String name;
@@ -19,4 +17,9 @@ public class ClientEntity {
     private Boolean property;
     private Boolean medical;
     private Boolean life;
+
+    @Override
+    public String toString() {
+        return lastname + ", " + name + " " + surname + " " + osago + " " + property + " " + medical + " " + life;
+    }
 }
