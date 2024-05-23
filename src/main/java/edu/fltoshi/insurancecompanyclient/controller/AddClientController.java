@@ -1,5 +1,7 @@
 package edu.fltoshi.insurancecompanyclient.controller;
 
+import edu.fltoshi.insurancecompanyclient.service.HTTPService;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -24,13 +26,16 @@ public class AddClientController {
     private ChoiceBox<?> ClientMedicalInsuranceCombo;
 
     @FXML
-    private ChoiceBox<?> ClientOSAGOCombo;
+    private ChoiceBox<?> ClientOsagoInsuranceCombo;
 
     @FXML
     private ChoiceBox<?> ClientPropertyInsuranceCombo;
 
     @FXML
-    private TextField ClientSurnamefield;
+    private Button ClientRecieveButton;
+
+    @FXML
+    private TextField ClientSurnameField;
 
     @FXML
     private ListView<?> ClientView;
