@@ -36,6 +36,9 @@ public class ClientProperties {
     private String deleteContract;
     private String getTimelapseContract;
 
+    private String saveUser;
+    private String checkUser;
+
     public ClientProperties() {
         try (InputStream input = MainApplication.class.getClassLoader().getResourceAsStream("config.properties")) {
             System.out.println(input);
@@ -65,6 +68,9 @@ public class ClientProperties {
             findContractById = properties.getProperty("contract.get");
             getAllContract = properties.getProperty("contract.getAll");
             getTimelapseContract = properties.getProperty("contract.getTimelapse");
+
+            checkUser = properties.getProperty("user.check");
+            saveUser = properties.getProperty("user.save");
 
         } catch (IOException exception) {
             exception.printStackTrace();

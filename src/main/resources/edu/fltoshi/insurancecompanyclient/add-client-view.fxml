@@ -8,7 +8,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fltoshi.insurancecompanyclient.controller.AddClientController">
+<AnchorPane prefHeight="400.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fltoshi.insurancecompanyclient.controller.AddClientController">
    <children>
       <Label layoutX="18.0" layoutY="25.0" text="Фамилия" />
       <Label layoutX="18.0" layoutY="53.0" text="Имя" />
@@ -20,7 +20,7 @@
       <TextField fx:id="ClientLastnameField" layoutX="140.0" layoutY="21.0" />
       <TextField fx:id="ClientFirstnameField" layoutX="140.0" layoutY="49.0" />
       <TextField fx:id="ClientSurnameField" layoutX="140.0" layoutY="78.0" />
-      <ListView fx:id="ClientView" layoutX="366.0" layoutY="10.0" prefHeight="380.0" prefWidth="340.0" />
+      <ListView fx:id="ClientView" layoutX="366.0" layoutY="10.0" onMouseClicked="#onMouseClickDataList" prefHeight="380.0" prefWidth="340.0" />
       <ButtonBar layoutY="350.0" prefHeight="40.0" prefWidth="350.0">
         <buttons>
           <Button fx:id="AddButton" mnemonicParsing="false" onAction="#AddAction" text="Добавить" />

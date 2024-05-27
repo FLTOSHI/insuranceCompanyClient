@@ -6,6 +6,7 @@ import edu.fltoshi.insurancecompanyclient.service.ClientService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -54,17 +55,36 @@ public class MainController {
     private TableView<ClientEntity> ClientTable;
 
     @FXML
+    private MenuItem ContractWork;
+
+    @FXML
+    private MenuItem InsuranceWork;
+
+    @FXML
     private Button AddButton;
 
     @FXML
     void AddNewClientAction(ActionEvent event) {
         MainApplication.showClientDialog();
     }
-    //    @FXML
-//    private Button EditButton;
-//
-//    @FXML
-//    private Button DeleteButton;
+
+        @FXML
+    private Button EditButton;
+
+    @FXML
+    private Button DeleteButton;
+
+
+    @FXML
+    void insuranceOpen(ActionEvent event) {
+        MainApplication.showDialog("add-insurance-view.fxml", "Работа с видами страхования");
+
+    }
+    @FXML
+    void contractOpen(ActionEvent event) {
+        MainApplication.showDialog("add-contract-view.fxml", "Работа с договорами");
+
+    }
 }
 
 

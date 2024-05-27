@@ -14,4 +14,9 @@ public class ContractEntity {
     private String timelapse;
     private ClientEntity client;
     private InsuranceEntity insurance;
+
+    @Override
+    public String toString() {
+        return timelapse + client + insurance;
+    }
 }

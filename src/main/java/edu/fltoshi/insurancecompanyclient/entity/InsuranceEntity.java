@@ -13,4 +13,10 @@ public class InsuranceEntity {
     private Long id;
     private String name;
     private Integer cost;
+
+    @Override
+    public String toString() {
+        return name + ", " + cost + "р.";
+
+    }
 }
