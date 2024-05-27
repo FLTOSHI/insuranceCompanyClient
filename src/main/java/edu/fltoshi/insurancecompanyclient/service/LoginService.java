@@ -37,9 +37,7 @@ public class LoginService {
         DataResponse<UserEntity> response = service.getObject(temp, dataType);
         if (response.isSuccess()) {
             this.data.add(response.getData());
-
         } else {
-
             throw new RuntimeException(response.getMessage());
         }
     }
@@ -50,7 +48,7 @@ public class LoginService {
         if (response.isSuccess()) {
             MainApplication.workspace("Система для автоматизации работы страховой компании 'Белгорстрах'");
         } else {
-//                alertService.dinfoundUser();
+            System.out.println("ДУРАЧОК ПАРОЛЬ ПРОВЕРЬ!!!!!!!");
         }
     }
 }

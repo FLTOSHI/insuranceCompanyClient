@@ -100,5 +100,4 @@ public class AddClientController {
 //        ClientLifeCombo.setItems(temp.getLife());
         return temp;
     }
-
 }

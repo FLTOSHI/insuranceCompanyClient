@@ -12,7 +12,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class LoginController {
-
     LoginService service = new LoginService();
     @FXML
     private Button enterButton;
