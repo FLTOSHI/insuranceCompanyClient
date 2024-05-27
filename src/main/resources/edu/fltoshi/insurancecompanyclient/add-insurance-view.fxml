@@ -27,7 +27,7 @@
         <buttons>
           <Button fx:id="InsuranceAddButton" mnemonicParsing="false" onAction="#addInsuranceAction" text="Добавить" />
             <Button fx:id="InsuranceDeleteButton" mnemonicParsing="false" onAction="#InsuranceDeleteAction" text="Удалить" />
-            <Button fx:id="InsuranceCancelButton" mnemonicParsing="false" onAction="#CancelAction" text="Изменить" />
+            <Button fx:id="InsuranceCancelButton" mnemonicParsing="false" onAction="#CancelAction" text="Отмена" />
         </buttons>
       </ButtonBar>
    </children>

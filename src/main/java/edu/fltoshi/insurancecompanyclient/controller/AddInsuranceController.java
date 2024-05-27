@@ -15,11 +15,12 @@ import javafx.stage.Stage;
 
 public class AddInsuranceController {
 
+
     InsuranceService insuranceService = new InsuranceService();
     private boolean addFlag = true;
 
     @FXML
-    private void initialize(){
+    private void initialize() {
         insuranceService.getAll();
         InsuranceListView.setItems(insuranceService.getData());
     }
@@ -28,13 +29,10 @@ public class AddInsuranceController {
     private Button InsuranceAddButton;
 
     @FXML
-    private TextField InsuranceCostField;
+    public Button InsuranceDeleteButton;
 
     @FXML
-    private Button InsuranceDeleteButton;
-
-    @FXML
-    private Button InsuranceEditButton;
+    private Button InsuranceCancelButton;
 
     @FXML
     private ListView<InsuranceEntity> InsuranceListView;
@@ -42,11 +40,13 @@ public class AddInsuranceController {
     @FXML
     private TextField InsuranceNameField;
 
+    @FXML
+    private TextField InsuranceCostField;
 
     @FXML
     void onMouseClickDataList(MouseEvent event) {
-        if (event.getButton().equals(MouseButton.PRIMARY)){
-            if (event.getClickCount() == 2){
+        if (event.getButton().equals(MouseButton.PRIMARY)) {
+            if (event.getClickCount() == 2) {
                 addFlag = false;
                 InsuranceEntity temp = getSelectionElement();
                 InsuranceNameField.setText(temp.getName());
@@ -56,19 +56,26 @@ public class AddInsuranceController {
         }
     }
 
-    private InsuranceEntity getSelectionElement(){
+    private InsuranceEntity getSelectionElement() {
         InsuranceEntity temp = InsuranceListView.getSelectionModel().getSelectedItem();
         return temp;
     }
 
     @FXML
     void CancelAction(ActionEvent event) {
-
+        Stage stage = (Stage) InsuranceCancelButton.getScene().getWindow();
+        stage.close();
     }
 
     @FXML
     void InsuranceDeleteAction(ActionEvent event) {
-
+        try {
+            insuranceService.delete(getSelectionElement());
+            InsuranceNameField.clear();
+            InsuranceCostField.clear();
+        } catch (Exception exception) {
+//            alertService.deleteVoid(exception);
+        }
     }
 
     @FXML
@@ -84,7 +91,7 @@ public class AddInsuranceController {
                 insuranceService.update(insurance, getSelectionElement());
             }
             InsuranceNameField.clear();
-        }catch (Exception e){
+        } catch (Exception e) {
 //            alertService.addVoid(e);
         }
         Stage stage = (Stage) InsuranceAddButton.getScene().getWindow();

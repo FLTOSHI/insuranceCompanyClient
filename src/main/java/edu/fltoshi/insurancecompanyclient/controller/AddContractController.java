@@ -73,8 +73,8 @@ public class AddContractController {
     private ContractEntity getSelectionElement(){
         ContractEntity temp = ContractListView.getSelectionModel().getSelectedItem();
         ContractTimelapseField.setText(temp.getTimelapse());
-//        InsuranceTypeBox.setItems((temp.getInsurance()));
-//        ClientBox.setItems((ObservableList<ClientEntity>) temp.getClient());
+        InsuranceTypeBox.setItems((ObservableList<InsuranceEntity>) temp.getInsurance());
+        ClientBox.setItems((ObservableList<ClientEntity>) temp.getClient());
         return temp;
     }
 
