@@ -30,9 +30,9 @@ public class LoginController {
             userEntity.setUsername(loginField.getText());
             userEntity.setPassword(passwordField.getText());
             service.checkUserData(userEntity);
+            MainApplication.workspace("Что-то важное.");
 
         }catch (Exception e){
-//            alertService.didntStart(e);
         }
         Stage stage = (Stage) enterButton.getScene().getWindow();
         stage.close();
@@ -43,7 +43,6 @@ public class LoginController {
         try {
             MainApplication.showDialog("add-user-view.fxml", "Регистрация нового пользователя");
         }catch (Exception e){
-//            alertService.didntStart(e);
         }
     }
 }

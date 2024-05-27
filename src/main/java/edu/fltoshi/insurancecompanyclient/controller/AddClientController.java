@@ -85,7 +85,6 @@ public class AddClientController {
             if (event.getClickCount() == 2){
                 addFlag = false;
                 ClientEntity temp = getSelectionElement();
-
             }
         }
     }
