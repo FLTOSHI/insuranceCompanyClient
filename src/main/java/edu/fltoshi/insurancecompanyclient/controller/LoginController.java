@@ -48,6 +48,7 @@ public class LoginController {
         try {
             MainApplication.showDialog("add-user-view.fxml", "Регистрация нового пользователя");
         } catch (Exception e) {
+            alerts.InvalidInput(e);
         }
     }
 }
