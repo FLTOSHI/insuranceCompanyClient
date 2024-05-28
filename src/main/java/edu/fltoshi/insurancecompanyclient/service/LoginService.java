@@ -19,12 +19,11 @@ public class LoginService {
 
     @Getter
     private ObservableList<UserEntity> data = FXCollections.observableArrayList();
-    //        private final ErrorAlertService alertService = new ErrorAlertService();
     private final HTTPService http = new HTTPService();
     JSONService service = new JSONService();
     private FXMLLoader fxmlLoader;
     private static MainController mainController;
-
+    AlertService alerts = new AlertService();
 
     ClientProperties prop = new ClientProperties();
     private Type dataType = new TypeToken<DataResponse<UserEntity>>() {
@@ -48,7 +47,7 @@ public class LoginService {
         if (response.isSuccess()) {
             MainApplication.workspace("Система для автоматизации работы страховой компании 'Белгорстрах'");
         } else {
-            System.out.println("ДУРАЧОК ПАРОЛЬ ПРОВЕРЬ!!!!!!!");
+            alerts.wrongUser();
         }
     }
 }

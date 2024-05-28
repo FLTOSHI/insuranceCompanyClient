@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fltoshi.insurancecompanyclient.controller.AddInsuranceController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="AnchorPane" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fltoshi.insurancecompanyclient.controller.AddInsuranceController">
    <children>
-      <ListView fx:id="InsuranceListView" layoutX="346.0" layoutY="14.0" onMouseClicked="#onMouseClickDataList" prefHeight="375.0" prefWidth="240.0" />
+      <ListView fx:id="InsuranceListView" layoutX="346.0" layoutY="14.0" onMouseClicked="#onMouseClickDataList" prefHeight="375.0" prefWidth="240.0" stylesheets="@style.css" />
       <Label layoutX="12.0" layoutY="46.0" text="Название">
          <font>
             <Font size="22.0" />
@@ -25,9 +25,9 @@
       <TextField fx:id="InsuranceCostField" layoutX="151.0" layoutY="111.0" />
       <ButtonBar layoutY="349.0" prefHeight="40.0" prefWidth="335.0">
         <buttons>
-          <Button fx:id="InsuranceAddButton" mnemonicParsing="false" onAction="#addInsuranceAction" text="Добавить" />
-            <Button fx:id="InsuranceDeleteButton" mnemonicParsing="false" onAction="#InsuranceDeleteAction" text="Удалить" />
-            <Button fx:id="InsuranceCancelButton" mnemonicParsing="false" onAction="#CancelAction" text="Отмена" />
+          <Button fx:id="InsuranceAddButton" mnemonicParsing="false" onAction="#addInsuranceAction" styleClass="Button" stylesheets="@style.css" text="Добавить" />
+            <Button fx:id="InsuranceDeleteButton" mnemonicParsing="false" onAction="#InsuranceDeleteAction" styleClass="Button" stylesheets="@style.css" text="Удалить" />
+            <Button fx:id="InsuranceCancelButton" mnemonicParsing="false" onAction="#CancelAction" styleClass="Button" stylesheets="@style.css" text="Отмена" />
         </buttons>
       </ButtonBar>
    </children>

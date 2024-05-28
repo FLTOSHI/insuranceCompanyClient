@@ -1,0 +1,26 @@
+.BorderPane {
+    -fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #97f6ea, #6cafa7);
+}
+
+.AnchorPane{
+    -fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #97f6ea, #6cafa7);
+}
+
+.Text{
+    -fx-font-family: "Segoe UI";
+}
+
+.TableView{
+    -fx-font-family: "Segoe UI";
+}
+
+.Button{
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #c1fff8, #bde0dd);
+}
+
+
+
+.TableColumn {
+    -fx-background-color: #c9dcd9;
+}

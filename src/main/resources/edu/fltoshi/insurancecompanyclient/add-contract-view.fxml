@@ -8,20 +8,20 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fltoshi.insurancecompanyclient.controller.AddContractController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="AnchorPane" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fltoshi.insurancecompanyclient.controller.AddContractController">
    <children>
       <ListView fx:id="ContractListView" layoutX="366.0" layoutY="14.0" onMouseClicked="#onMouseClickDataList" prefHeight="369.0" prefWidth="220.0" />
-      <Label layoutX="24.0" layoutY="32.0" text="Клиент" />
-      <Label layoutX="24.0" layoutY="77.0" text="Вид страхования" />
-      <Label layoutX="24.0" layoutY="120.0" text="Длительность договора" />
+      <Label layoutX="24.0" layoutY="32.0" styleClass="Text" stylesheets="@style.css" text="Клиент" />
+      <Label layoutX="24.0" layoutY="77.0" styleClass="Text" stylesheets="@style.css" text="Вид страхования" />
+      <Label layoutX="24.0" layoutY="120.0" styleClass="Text" stylesheets="@style.css" text="Длительность договора" />
       <ComboBox fx:id="InsuranceTypeBox" layoutX="191.0" layoutY="65.0" prefWidth="150.0" />
       <ComboBox fx:id="ClientBox" layoutX="191.0" layoutY="28.0" prefWidth="150.0" />
       <TextField fx:id="ContractTimelapseField" layoutX="192.0" layoutY="116.0" />
       <ButtonBar layoutY="343.0" prefHeight="40.0" prefWidth="350.0">
         <buttons>
-          <Button fx:id="ContractAddButton" mnemonicParsing="false" onAction="#ContractAddAction" text="Добавить" />
-            <Button fx:id="ContractDeleteButton" mnemonicParsing="false" onAction="#ContractDeleteAction" text="Удалить" />
-            <Button fx:id="ContractCancelButton" mnemonicParsing="false" onAction="#CancelAction" text="Отмена" />
+          <Button fx:id="ContractAddButton" mnemonicParsing="false" onAction="#ContractAddAction" styleClass="Button" stylesheets="@style.css" text="Добавить" />
+            <Button fx:id="ContractDeleteButton" mnemonicParsing="false" onAction="#ContractDeleteAction" styleClass="Button" stylesheets="@style.css" text="Удалить" />
+            <Button fx:id="ContractCancelButton" mnemonicParsing="false" onAction="#CancelAction" styleClass="Button" stylesheets="@style.css" text="Отмена" />
         </buttons>
       </ButtonBar>
    </children>

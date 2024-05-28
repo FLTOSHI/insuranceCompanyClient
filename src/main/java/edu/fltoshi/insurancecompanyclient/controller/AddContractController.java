@@ -3,6 +3,7 @@ package edu.fltoshi.insurancecompanyclient.controller;
 import edu.fltoshi.insurancecompanyclient.entity.ClientEntity;
 import edu.fltoshi.insurancecompanyclient.entity.ContractEntity;
 import edu.fltoshi.insurancecompanyclient.entity.InsuranceEntity;
+import edu.fltoshi.insurancecompanyclient.service.AlertService;
 import edu.fltoshi.insurancecompanyclient.service.ClientService;
 import edu.fltoshi.insurancecompanyclient.service.ContractService;
 import edu.fltoshi.insurancecompanyclient.service.InsuranceService;
@@ -22,7 +23,9 @@ public class AddContractController {
     InsuranceService insuranceService = new InsuranceService();
     ClientService clientService = new ClientService();
     ContractService contractService = new ContractService();
+    AlertService alerts = new AlertService();
 
+    private boolean booleanVariable = false;
     private boolean addFlag = true;
 
 
@@ -33,7 +36,17 @@ public class AddContractController {
         contractService.getAll();
         ContractListView.setItems(contractService.getData());
         ClientBox.setItems(clientService.getData());
-        InsuranceTypeBox.setItems(insuranceService.getData());
+
+        InsuranceTypeBox.getItems().addAll("ОСАГО", "Имущество", "Медицина", "Жизнь");
+        InsuranceTypeBox.setValue("Нет");
+
+        InsuranceTypeBox.valueProperty().addListener((observable, oldValue, newValue) -> {
+            if ("Есть".equals(newValue)) {
+                booleanVariable = true;
+            } else if ("Нет".equals(newValue)) {
+                booleanVariable = false;
+            }
+        });
     }
 
     @FXML
@@ -55,7 +68,7 @@ public class AddContractController {
     private TextField ContractTimelapseField;
 
     @FXML
-    private ComboBox<InsuranceEntity> InsuranceTypeBox;
+    private ComboBox<String> InsuranceTypeBox;
 
     @FXML
     void onMouseClickDataList(MouseEvent event) {
@@ -63,7 +76,7 @@ public class AddContractController {
             if (event.getClickCount() == 2){
                 addFlag = false;
                 ContractEntity temp = getSelectionElement();
-//                ClientBox.setItems();
+                ClientBox.setItems(clientService.getData());
                 ContractTimelapseField.setText(ContractTimelapseField.getText());
                 ContractAddButton.setText("Изменить");
             }
@@ -73,7 +86,7 @@ public class AddContractController {
     private ContractEntity getSelectionElement(){
         ContractEntity temp = ContractListView.getSelectionModel().getSelectedItem();
         ContractTimelapseField.setText(temp.getTimelapse());
-        InsuranceTypeBox.setItems((ObservableList<InsuranceEntity>) temp.getInsurance());
+        InsuranceTypeBox.setItems(temp.getInsurance());
         ClientBox.setItems((ObservableList<ClientEntity>) temp.getClient());
         return temp;
     }
@@ -89,11 +102,11 @@ public class AddContractController {
                 contractService.add(contract);
             } else {
                 contract.setId(getSelectionElement().getId());
-//                ContractService.update(contract, getSelectionElement());
+//                ContractService.save(contract, getSelectionElement());
             }
 
         }catch (Exception e){
-//            alertService.addVoid(e);
+            alerts.addVoid(e);
         }
         Stage stage = (Stage) ContractAddButton.getScene().getWindow();
         stage.close();
@@ -101,6 +114,12 @@ public class AddContractController {
     }
 
     public void ContractDeleteAction(ActionEvent actionEvent) {
+        try {
+            contractService.delete(getSelectionElement());
+            ContractListView.editableProperty().setValue(false);
+        } catch (Exception e) {
+            alerts.deleteVoid(e);
+        }
     }
 
     public void CancelAction(ActionEvent actionEvent) {
