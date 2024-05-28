@@ -2,13 +2,13 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
-<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="720.0" styleClass="AnchorPane" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fltoshi.insurancecompanyclient.controller.AddClientController">
+<AnchorPane prefHeight="400.0" prefWidth="720.0" styleClass="AnchorPane" stylesheets="@style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fltoshi.insurancecompanyclient.controller.AddClientController">
    <children>
       <Label layoutX="18.0" layoutY="25.0" stylesheets="@style.css" text="Фамилия" />
       <Label layoutX="18.0" layoutY="53.0" stylesheets="@style.css" text="Имя" />
@@ -24,13 +24,13 @@
       <ButtonBar layoutY="350.0" prefHeight="40.0" prefWidth="350.0" stylesheets="@style.css">
         <buttons>
           <Button fx:id="AddButton" mnemonicParsing="false" onAction="#AddAction" styleClass="Button" stylesheets="@style.css" text="Добавить" />
-            <Button fx:id="EditButton" mnemonicParsing="false" onAction="#EditAction" styleClass="Button" stylesheets="@style.css" text="Изменить" />
             <Button fx:id="DeleteButton" mnemonicParsing="false" onAction="#DeleteAction" styleClass="Button" stylesheets="@style.css" text="Удалить" />
+            <Button fx:id="CancelButton" mnemonicParsing="false" onAction="#CancelAction" styleClass="Button" stylesheets="@style.css" text="Отмена" />
         </buttons>
       </ButtonBar>
-      <ComboBox fx:id="ClientOsagoCombo" layoutX="140.0" layoutY="128.0" prefWidth="150.0" stylesheets="@style.css" />
-      <ComboBox fx:id="ClientMedicalCombo" layoutX="140.0" layoutY="164.0" prefWidth="150.0" stylesheets="@style.css" />
-      <ComboBox fx:id="ClientPropertyCombo" layoutX="140.0" layoutY="200.0" prefWidth="150.0" stylesheets="@style.css" />
-      <ComboBox fx:id="ClientLifeCombo" layoutX="140.0" layoutY="235.0" prefWidth="150.0" stylesheets="@style.css" />
+      <CheckBox fx:id="ClientOsagoCheck" layoutX="139.0" layoutY="132.0" mnemonicParsing="false" text="Имеется ли ОСАГО?" />
+      <CheckBox fx:id="ClientMedicalCheck" layoutX="139.0" layoutY="168.0" mnemonicParsing="false" text="Имеется ли мед. страхование?" />
+      <CheckBox fx:id="ClientPropertyCheck" layoutX="139.0" layoutY="204.0" mnemonicParsing="false" text="Имеется ли страхование имущества?" />
+      <CheckBox fx:id="ClientLifeCheck" layoutX="139.0" layoutY="239.0" mnemonicParsing="false" text="Имеется ли страхование жизни?" />
    </children>
 </AnchorPane>

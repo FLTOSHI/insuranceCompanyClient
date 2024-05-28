@@ -17,53 +17,12 @@ public class AddClientController {
     private final ClientService service = new ClientService();
 
     private AlertService alerts = new AlertService();
-
-    private boolean booleanVariable = true;
-    private boolean addFlag = false;
+    private boolean addFlag = true;
 
     @FXML
-    private void initialize(){
+    private void initialize() {
         service.getAll();
         ClientView.setItems(service.getData());
-        ClientLifeCombo.getItems().addAll("Есть", "Нет");
-        ClientLifeCombo.setValue("Нет");
-        ClientLifeCombo.valueProperty().addListener((observable, oldValue, newValue) -> {
-            if ("Есть".equals(newValue)) {
-                booleanVariable = true;
-            } else if ("Нет".equals(newValue)) {
-                booleanVariable = false;
-            }
-        });
-
-        ClientMedicalCombo.getItems().addAll("Есть", "Нет");
-        ClientMedicalCombo.setValue("Нет");
-        ClientMedicalCombo.valueProperty().addListener((observable, oldValue, newValue) -> {
-            if ("Есть".equals(newValue)) {
-                booleanVariable = true;
-            } else if ("Нет".equals(newValue)) {
-                booleanVariable = false;
-            }
-        });
-
-        ClientOsagoCombo.getItems().addAll("Есть", "Нет");
-        ClientOsagoCombo.setValue("Нет");
-        ClientOsagoCombo.valueProperty().addListener((observable, oldValue, newValue) -> {
-            if ("Есть".equals(newValue)) {
-                booleanVariable = true;
-            } else if ("Нет".equals(newValue)) {
-                booleanVariable = false;
-            }
-        });
-
-        ClientPropertyCombo.getItems().addAll("Есть", "Нет");
-        ClientPropertyCombo.setValue("Нет");
-        ClientPropertyCombo.valueProperty().addListener((observable, oldValue, newValue) -> {
-            if ("Есть".equals(newValue)) {
-                booleanVariable = true;
-            } else if ("Нет".equals(newValue)) {
-                booleanVariable = false;
-            }
-        });
     }
 
     @FXML
@@ -75,16 +34,16 @@ public class AddClientController {
     private TextField ClientSurnameField;
 
     @FXML
-    private ComboBox<String> ClientLifeCombo;
+    private CheckBox ClientLifeCheck;
 
     @FXML
-    private ComboBox<String> ClientMedicalCombo;
+    private CheckBox ClientMedicalCheck;
 
     @FXML
-    private ComboBox<String> ClientOsagoCombo;
+    private CheckBox ClientOsagoCheck;
 
     @FXML
-    private ComboBox<String> ClientPropertyCombo;
+    private CheckBox ClientPropertyCheck;
 
     @FXML
     private ListView<ClientEntity> ClientView;
@@ -93,7 +52,7 @@ public class AddClientController {
     private Button DeleteButton;
 
     @FXML
-    private Button EditButton;
+    private Button CancelButton;
 
     @FXML
     private Button AddButton;
@@ -105,11 +64,10 @@ public class AddClientController {
             client.setLastname(ClientLastnameField.getText());
             client.setName(ClientFirstnameField.getText());
             client.setSurname(ClientSurnameField.getText());
-            client.setOsago(Boolean.valueOf(ClientOsagoCombo.getValue()));
-            client.setMedical(Boolean.valueOf(ClientOsagoCombo.getValue()));
-            client.setProperty(Boolean.valueOf(ClientOsagoCombo.getValue()));
-            client.setLife(Boolean.valueOf(ClientOsagoCombo.getValue()));
-
+            client.setOsago(ClientOsagoCheck.isSelected());
+            client.setProperty(ClientPropertyCheck.isSelected());
+            client.setMedical(ClientMedicalCheck.isSelected());
+            client.setLife(ClientLifeCheck.isSelected());
             service.add(client);
         } catch (Exception e) {
             alerts.addVoid(e);
@@ -127,28 +85,37 @@ public class AddClientController {
     }
 
     @FXML
-    void EditAction(ActionEvent event) {
+    void CancelAction(ActionEvent event) {
+        addFlag = true;
     }
 
     @FXML
     void onMouseClickDataList(MouseEvent event) {
-        if (event.getButton().equals(MouseButton.PRIMARY)){
-            if (event.getClickCount() == 2){
+        if (event.getButton().equals(MouseButton.PRIMARY)) {
+            if (event.getClickCount() == 2) {
                 addFlag = false;
                 ClientEntity temp = getSelectionElement();
+                ClientLastnameField.setText(temp.getLastname());
+                ClientFirstnameField.setText(temp.getName());
+                ClientSurnameField.setText(temp.getSurname());
+                ClientMedicalCheck.setSelected(temp.getMedical());
+                ClientPropertyCheck.setSelected(temp.getProperty());
+                ClientOsagoCheck.setSelected(temp.getOsago());
+                ClientLifeCheck.setSelected(temp.getLife());
+                AddButton.setText("Изменить");
             }
         }
     }
 
-    private ClientEntity getSelectionElement(){
+    private ClientEntity getSelectionElement() {
         ClientEntity temp = ClientView.getSelectionModel().getSelectedItem();
         ClientLastnameField.setText(temp.getLastname());
         ClientFirstnameField.setText(temp.getName());
         ClientSurnameField.setText(temp.getSurname());
-//        ClientOsagoCombo.(Boolean.valueOf(ClientOsagoCombo.getValue()));
-//        .setMedical(Boolean.valueOf(ClientOsagoCombo.getValue()));
-//        client.setProperty(Boolean.valueOf(ClientOsagoCombo.getValue()));
-//        client.setLife(Boolean.valueOf(ClientOsagoCombo.getValue()));
+        ClientLifeCheck.setSelected(temp.getLife());
+        ClientOsagoCheck.setSelected(temp.getOsago());
+        ClientMedicalCheck.setSelected(temp.getMedical());
+        ClientPropertyCheck.setSelected(temp.getProperty());
         return temp;
     }
 }
