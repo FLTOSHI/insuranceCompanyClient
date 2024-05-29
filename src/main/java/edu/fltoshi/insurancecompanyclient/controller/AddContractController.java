@@ -39,14 +39,6 @@ public class AddContractController {
 
         InsuranceTypeBox.getItems().addAll("ОСАГО", "Имущество", "Медицина", "Жизнь");
         InsuranceTypeBox.setValue("Нет");
-
-        InsuranceTypeBox.valueProperty().addListener((observable, oldValue, newValue) -> {
-            if ("Есть".equals(newValue)) {
-                booleanVariable = true;
-            } else if ("Нет".equals(newValue)) {
-                booleanVariable = false;
-            }
-        });
     }
 
     @FXML
@@ -86,7 +78,6 @@ public class AddContractController {
     private ContractEntity getSelectionElement(){
         ContractEntity temp = ContractListView.getSelectionModel().getSelectedItem();
         ContractTimelapseField.setText(temp.getTimelapse());
-//        InsuranceTypeBox.setItems(temp.getInsurance());
         ClientBox.setItems((ObservableList<ClientEntity>) temp.getClient());
         return temp;
     }
@@ -96,13 +87,11 @@ public class AddContractController {
         try {
             ContractEntity contract = new ContractEntity();
             contract.setClient(ClientBox.getValue());
-//            contract.setInsurance(InsuranceTypeBox.getValue());
             contract.setTimelapse(ContractTimelapseField.getText());
             if (addFlag) {
                 contractService.add(contract);
             } else {
                 contract.setId(getSelectionElement().getId());
-//                ContractService.save(contract, getSelectionElement());
             }
 
         }catch (Exception e){
@@ -123,5 +112,6 @@ public class AddContractController {
     }
 
     public void CancelAction(ActionEvent actionEvent) {
+        addFlag = true;
     }
 }

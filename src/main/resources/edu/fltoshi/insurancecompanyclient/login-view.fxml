@@ -10,12 +10,12 @@
 
 <AnchorPane prefHeight="300.0" prefWidth="320.0" styleClass="AnchorPane" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fltoshi.insurancecompanyclient.controller.LoginController">
    <children>
-      <TextField fx:id="loginField" layoutX="99.0" layoutY="166.0" prefHeight="26.0" prefWidth="181.0" promptText="SuperVasya" />
+      <TextField fx:id="loginField" layoutX="99.0" layoutY="166.0" prefHeight="26.0" prefWidth="181.0" promptText="IvanIvanov" />
       <Text fontSmoothingType="LCD" layoutX="50.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Text" text="Логин" />
       <ButtonBar layoutX="46.0" layoutY="260.0" prefHeight="40.0" prefWidth="226.0">
          <buttons>
             <Button fx:id="enterButton" mnemonicParsing="false" onAction="#enterAction" prefHeight="28.0" prefWidth="94.0" styleClass="Button" text="Вход" />
-            <Button fx:id="AddButton" mnemonicParsing="false" onAction="#registrationAction" prefHeight="28.0" prefWidth="94.0" styleClass="Button" text="Регистрация" />
+            <Button fx:id="registrationButton" mnemonicParsing="false" onAction="#registrationAction" prefHeight="28.0" prefWidth="94.0" styleClass="Button" text="Регистрация" />
          </buttons>
       </ButtonBar>
       <Text fontSmoothingType="LCD" layoutX="46.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Text" text="Пароль" />

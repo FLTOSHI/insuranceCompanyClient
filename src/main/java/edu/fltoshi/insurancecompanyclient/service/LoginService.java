@@ -41,14 +41,16 @@ public class LoginService {
         }
     }
 
-    public void checkUserData(UserEntity data) throws IOException {
-        String temp = http.get(prop.getCheckUser() + data.getUsername() + "&password=" + data.getPassword());
+    public UserEntity checkUserData(UserEntity data) throws IOException {
+        String temp = http.get(prop.getCheckUser() + data.getUsername()+"&password="+data.getPassword());
         DataResponse<UserEntity> response = service.getObject(temp, dataType);
-        if (response.isSuccess()) {
-            MainApplication.workspace("Система для автоматизации работы страховой компании 'Белгорстрах'");
-        } else {
+        if (response.isSuccess()){
+            MainApplication.workspace("Главная");
+            return response.getData();
+        }else{
             alerts.wrongUser();
         }
+        return null;
     }
 }
 

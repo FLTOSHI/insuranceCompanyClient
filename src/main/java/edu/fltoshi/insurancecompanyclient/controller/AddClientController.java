@@ -15,16 +15,17 @@ import javafx.scene.input.MouseEvent;
 
 public class AddClientController {
     private final ClientService service = new ClientService();
-
     private AlertService alerts = new AlertService();
     private boolean addFlag = true;
 
     @FXML
     private void initialize() {
+        // Получение данных с сервера и расположение их в таблице
         service.getAll();
         ClientView.setItems(service.getData());
     }
 
+    // Компоненты интерфейса
     @FXML
     private TextField ClientLastnameField;
     @FXML
@@ -32,7 +33,6 @@ public class AddClientController {
 
     @FXML
     private TextField ClientSurnameField;
-
     @FXML
     private CheckBox ClientLifeCheck;
 
@@ -57,6 +57,7 @@ public class AddClientController {
     @FXML
     private Button AddButton;
 
+    // Действия
     @FXML
     void AddAction(ActionEvent event) {
         try {

@@ -31,18 +31,19 @@
               <menus>
                 <Menu mnemonicParsing="false" text="Файл">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="Close" />
+                    <MenuItem fx:id="exitMenu" mnemonicParsing="false" onAction="#exitAction" text="Закрыть" />
                   </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Редакт.">
+                <Menu mnemonicParsing="false" text="Редактирование">
                   <items>
                         <MenuItem fx:id="ContractWork" mnemonicParsing="false" onAction="#contractOpen" text="Работа с договорами" />
                     <MenuItem fx:id="InsuranceWork" mnemonicParsing="false" onAction="#insuranceOpen" text="Работа со страховками" />
+                        <MenuItem fx:id="UserWork" mnemonicParsing="false" onAction="#userOpen" text="Работа с пользователями" />
                   </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="ПОМОЩЬ">
+                <Menu mnemonicParsing="false" text="Помощь">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="About" />
+                    <MenuItem fx:id="helpMenu" mnemonicParsing="false" onAction="#helpAction" text="Справка" />
                   </items>
                 </Menu>
               </menus>
@@ -52,7 +53,6 @@
             <ButtonBar prefHeight="49.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
                <buttons>
                   <Button fx:id="AddButton" mnemonicParsing="false" onAction="#AddNewClientAction" styleClass="Button" stylesheets="@style.css" text="Добавить" />
-                  <Button fx:id="EditButton" mnemonicParsing="false" styleClass="Button" stylesheets="@style.css" text="Изменить" />
                   <Button fx:id="DeleteButton" mnemonicParsing="false" styleClass="Button" stylesheets="@style.css" text="Удалить" />
                </buttons>
             </ButtonBar>

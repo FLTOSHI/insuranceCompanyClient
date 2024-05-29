@@ -1,8 +1,7 @@
 package edu.fltoshi.insurancecompanyclient.controller;
 
 import edu.fltoshi.insurancecompanyclient.entity.InsuranceEntity;
-import edu.fltoshi.insurancecompanyclient.service.ClientService;
-import edu.fltoshi.insurancecompanyclient.service.ContractService;
+import edu.fltoshi.insurancecompanyclient.service.AlertService;
 import edu.fltoshi.insurancecompanyclient.service.InsuranceService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,18 +12,33 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+import static edu.fltoshi.insurancecompanyclient.MainApplication.tempUser;
+import static edu.fltoshi.insurancecompanyclient.MainApplication.userAdmin;
+
 public class AddInsuranceController {
 
-
     InsuranceService insuranceService = new InsuranceService();
+    AlertService alerts = new AlertService();
     private boolean addFlag = true;
 
     @FXML
     private void initialize() {
+        // Проверка роли пользователя
+        if (userAdmin.equals(tempUser)) {
+            InsuranceAddButton.setVisible(true);
+            InsuranceDeleteButton.setVisible(true);
+        } else {
+            InsuranceAddButton.setVisible(false);
+            InsuranceDeleteButton.setVisible(false);
+        }
+
+        // Получение данных с сервера и расположение их в списке
         insuranceService.getAll();
         InsuranceListView.setItems(insuranceService.getData());
     }
 
+
+    // Компоненты интерфейса
     @FXML
     private Button InsuranceAddButton;
 
@@ -43,6 +57,7 @@ public class AddInsuranceController {
     @FXML
     private TextField InsuranceCostField;
 
+    // Действия
     @FXML
     void onMouseClickDataList(MouseEvent event) {
         if (event.getButton().equals(MouseButton.PRIMARY)) {
@@ -63,8 +78,7 @@ public class AddInsuranceController {
 
     @FXML
     void CancelAction(ActionEvent event) {
-        Stage stage = (Stage) InsuranceCancelButton.getScene().getWindow();
-        stage.close();
+        addFlag = true;
     }
 
     @FXML
@@ -74,7 +88,7 @@ public class AddInsuranceController {
             InsuranceNameField.clear();
             InsuranceCostField.clear();
         } catch (Exception exception) {
-//            alertService.deleteVoid(exception);
+            alerts.deleteVoid(exception);
         }
     }
 
@@ -91,12 +105,11 @@ public class AddInsuranceController {
                 insuranceService.update(insurance, getSelectionElement());
             }
             InsuranceNameField.clear();
-        } catch (Exception e) {
-//            alertService.addVoid(e);
+        } catch (Exception exception) {
+            alerts.addVoid(exception);
         }
         Stage stage = (Stage) InsuranceAddButton.getScene().getWindow();
         stage.close();
         InsuranceAddButton.setText("Добавить");
     }
-
 }

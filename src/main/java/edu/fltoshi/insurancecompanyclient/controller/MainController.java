@@ -1,5 +1,6 @@
 package edu.fltoshi.insurancecompanyclient.controller;
 
+import static edu.fltoshi.insurancecompanyclient.MainApplication.*;
 import edu.fltoshi.insurancecompanyclient.MainApplication;
 import edu.fltoshi.insurancecompanyclient.entity.ClientEntity;
 import edu.fltoshi.insurancecompanyclient.service.ClientService;
@@ -10,15 +11,24 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class MainController {
     ClientService service = new ClientService();
 
+    // Инициалазция окна
     @FXML
     private void initialize() {
-        //получаем все книги с сервера
+        if (userAdmin.equals(tempUser)) {
+            UserWork.setVisible(true);
+        } else {
+            UserWork.setVisible(false);
+        }
+
+        // Получение данных с сервера и установка их по местам в таблице
         service.getAll();
-        //связываем поля таблицы со столбцами
         ClientLastnameColumn.setCellValueFactory(new PropertyValueFactory<>("lastname"));
         ClientNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         ClientSurnameColumn.setCellValueFactory(new PropertyValueFactory<>("surname"));
@@ -30,6 +40,7 @@ public class MainController {
         ClientTable.setItems(service.getData());
     }
 
+    // Компоненты FXML
     @FXML
     private TableColumn<ClientEntity, String> ClientLastnameColumn;
 
@@ -61,30 +72,52 @@ public class MainController {
     private MenuItem InsuranceWork;
 
     @FXML
+    private MenuItem UserWork;
+
+    @FXML
+    private MenuItem exitMenu;
+
+    @FXML
+    private MenuItem helpMenu;
+
+    @FXML
     private Button AddButton;
 
     @FXML
-    void AddNewClientAction(ActionEvent event) {
-        MainApplication.showClientDialog();
-    }
-
-        @FXML
     private Button EditButton;
 
     @FXML
     private Button DeleteButton;
 
+    // Действия
+    @FXML
+    void AddNewClientAction(ActionEvent event) {
+        MainApplication.showDialog("add-client-view.fxml", "Работа с клиентами");
+    }
 
     @FXML
     void insuranceOpen(ActionEvent event) {
         MainApplication.showDialog("add-insurance-view.fxml", "Работа с видами страхования");
-
     }
+
     @FXML
     void contractOpen(ActionEvent event) {
         MainApplication.showDialog("add-contract-view.fxml", "Работа с договорами");
+    }
 
+    @FXML
+    void userOpen(ActionEvent event) {
+        MainApplication.showDialog("add-user-view.fxml", "Работа с пользователями");
+    }
+
+    @FXML
+    void exitAction(ActionEvent event) {
+        Stage stage = (Stage) DeleteButton.getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
+    void helpAction(ActionEvent event) throws IOException {
+        Runtime.getRuntime().exec("hh.exe C:\\Users\\User\\Desktop\\primeMOY\\help.chm");
     }
 }
-
-
