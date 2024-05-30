@@ -12,13 +12,13 @@
 
 .TableView{
     -fx-font-family: "Segoe UI";
+    -fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #d4f8f2, #7ee0db);;
 }
 
 .Button{
     -fx-font-family: "Segoe UI Semibold";
     -fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #c1fff8, #bde0dd);
 }
-
 
 .TableColumn {
     -fx-background-color: #c9dcd9;

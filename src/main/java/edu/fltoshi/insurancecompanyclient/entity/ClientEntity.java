@@ -20,6 +20,6 @@ public class ClientEntity {
 
     @Override
     public String toString() {
-        return lastname + ", " + name + " " + surname + " " + osago + " " + property + " " + medical + " " + life;
+        return lastname + ", " + name + " " + surname;
     }
 }

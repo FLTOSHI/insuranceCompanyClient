@@ -3,6 +3,7 @@ package edu.fltoshi.insurancecompanyclient.controller;
 import static edu.fltoshi.insurancecompanyclient.MainApplication.*;
 import edu.fltoshi.insurancecompanyclient.MainApplication;
 import edu.fltoshi.insurancecompanyclient.entity.ClientEntity;
+import edu.fltoshi.insurancecompanyclient.entity.InsuranceEntity;
 import edu.fltoshi.insurancecompanyclient.service.ClientService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,12 +12,15 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class MainController {
     ClientService service = new ClientService();
+    private boolean addFlag = false;
 
     // Инициалазция окна
     @FXML
@@ -91,8 +95,27 @@ public class MainController {
 
     // Действия
     @FXML
-    void AddNewClientAction(ActionEvent event) {
+    void onMouseClickDataList(MouseEvent event) {
+        if (event.getButton().equals(MouseButton.PRIMARY)) {
+            if (event.getClickCount() == 2) {
+                addFlag = false;
+                ClientEntity temp = getSelectionElement();
+            }
+        }
+    }
+
+    private ClientEntity getSelectionElement() {
+        ClientEntity temp = ClientTable.getSelectionModel().getSelectedItem();
+        return temp;
+    }
+    @FXML
+    void addNewClientAction(ActionEvent event) {
         MainApplication.showDialog("add-client-view.fxml", "Работа с клиентами");
+    }
+
+    @FXML
+    void deleteAction(ActionEvent event) {
+        service.delete(getSelectionElement());
     }
 
     @FXML

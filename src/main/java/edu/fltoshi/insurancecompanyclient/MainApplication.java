@@ -20,7 +20,6 @@ public class MainApplication extends Application {
     @Getter
     @Setter
     private static LoginController loginController;
-    public static LoginService loginService = new LoginService();
 
     @Getter
     @Setter

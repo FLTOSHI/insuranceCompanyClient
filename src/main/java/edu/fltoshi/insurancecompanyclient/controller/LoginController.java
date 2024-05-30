@@ -48,7 +48,7 @@ public class LoginController {
     @FXML
     void registrationAction(ActionEvent event) {
         try {
-            MainApplication.showDialog("add-registration-add-user-view.fxml", "Регистрация нового пользователя");
+            MainApplication.showDialog("add-registration-user-view.fxml", "Регистрация нового пользователя");
         } catch (Exception e) {
             alerts.InvalidInput(e);
         }

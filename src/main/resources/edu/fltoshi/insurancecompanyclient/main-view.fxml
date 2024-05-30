@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Menu?>
@@ -10,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fltoshi.insurancecompanyclient.controller.MainController">
+<AnchorPane prefHeight="768.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fltoshi.insurancecompanyclient.controller.MainController">
    <children>
       <BorderPane prefHeight="776.0" prefWidth="1280.0" styleClass="BorderPane" stylesheets="@style.css">
          <center>
@@ -18,11 +19,11 @@
               <columns>
                 <TableColumn fx:id="ClientLastnameColumn" prefWidth="198.0" styleClass="TableColumn" text="Фамилия" />
                 <TableColumn fx:id="ClientNameColumn" prefWidth="211.0" styleClass="TableColumn" text="Имя" />
-                  <TableColumn fx:id="ClientSurnameColumn" prefWidth="157.0" styleClass="TableColumn" text="Отчество" />
-                  <TableColumn fx:id="ClientOSAGOColumn" prefWidth="154.0" styleClass="TableColumn" text="Страхование ОСАГО" />
-                  <TableColumn fx:id="ClientPropertyColumn" minWidth="2.0" prefWidth="151.0" styleClass="TableColumn" text="Страхование имущества" />
-                  <TableColumn fx:id="ClientMedicalColumn" prefWidth="246.0" styleClass="TableColumn" text="Медицинское страхование" />
-                  <TableColumn fx:id="ClientLifeColumn" prefWidth="162.0" styleClass="TableColumn" text="Страхование жизни" />
+                  <TableColumn fx:id="ClientSurnameColumn" prefWidth="281.0" styleClass="TableColumn" text="Отчество" />
+                  <TableColumn fx:id="ClientOSAGOColumn" prefWidth="126.0" styleClass="TableColumn" text="Страхование ОСАГО" />
+                  <TableColumn fx:id="ClientPropertyColumn" minWidth="2.0" prefWidth="155.0" styleClass="TableColumn" text="Страхование имущества" />
+                  <TableColumn fx:id="ClientMedicalColumn" prefWidth="170.0" styleClass="TableColumn" text="Медицинское страхование" />
+                  <TableColumn fx:id="ClientLifeColumn" prefWidth="138.0" styleClass="TableColumn" text="Страхование жизни" />
               </columns>
             </TableView>
          </center>
@@ -52,9 +53,12 @@
          <bottom>
             <ButtonBar prefHeight="49.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
                <buttons>
-                  <Button fx:id="AddButton" mnemonicParsing="false" onAction="#AddNewClientAction" styleClass="Button" stylesheets="@style.css" text="Добавить" />
-                  <Button fx:id="DeleteButton" mnemonicParsing="false" styleClass="Button" stylesheets="@style.css" text="Удалить" />
+                  <Button fx:id="AddButton" mnemonicParsing="false" onAction="#addNewClientAction" styleClass="Button" stylesheets="@style.css" text="Добавить" />
+                  <Button fx:id="DeleteButton" mnemonicParsing="false" onAction="#deleteAction" styleClass="Button" stylesheets="@style.css" text="Удалить" />
                </buttons>
+               <padding>
+                  <Insets right="10.0" />
+               </padding>
             </ButtonBar>
          </bottom>
       </BorderPane>

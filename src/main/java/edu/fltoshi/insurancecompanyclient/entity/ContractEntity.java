@@ -17,6 +17,6 @@ public class ContractEntity {
 
     @Override
     public String toString() {
-        return timelapse + client + insurance;
+        return client.getLastname() + ", " + client.getName() + " " + insurance;
     }
 }
