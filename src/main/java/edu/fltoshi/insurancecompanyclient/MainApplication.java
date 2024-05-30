@@ -1,5 +1,6 @@
 package edu.fltoshi.insurancecompanyclient;
 
+import com.sun.tools.javac.Main;
 import edu.fltoshi.insurancecompanyclient.controller.LoginController;
 import edu.fltoshi.insurancecompanyclient.controller.MainController;
 import edu.fltoshi.insurancecompanyclient.entity.UserEntity;
@@ -7,6 +8,7 @@ import edu.fltoshi.insurancecompanyclient.service.LoginService;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -28,12 +30,12 @@ public class MainApplication extends Application {
     @Getter
     @Setter
     public static UserEntity userAdmin = new UserEntity();
-
-
+    private static String iconPath = "edu/fltoshi/insurancecompanyclient/images/appIcon.png";
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("login-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 300);
+        stage.getIcons().add(new Image(iconPath));
         stage.setTitle("Авторизация");
         stage.setScene(scene);
         stage.show();
@@ -45,6 +47,7 @@ public class MainApplication extends Application {
         stage.setTitle(title);
         stage.initModality(Modality.WINDOW_MODAL);
         Scene scene = new Scene(fxmlLoader.load(), 1280, 768);
+        stage.getIcons().add(new Image(iconPath));
 
         stage.setScene(scene);
         mainController = fxmlLoader.getController();
@@ -57,6 +60,7 @@ public class MainApplication extends Application {
             loader.setLocation(MainApplication.class.getResource(nameView));
             AnchorPane page = loader.load();
             Stage dialogStage = new Stage();
+            dialogStage.getIcons().add(new Image(iconPath));
             dialogStage.setTitle(title);
             dialogStage.initModality(Modality.WINDOW_MODAL);
             Scene scene = new Scene(page);

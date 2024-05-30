@@ -45,7 +45,7 @@ public class LoginService {
         String temp = http.get(prop.getCheckUser() + data.getUsername()+"&password="+data.getPassword());
         DataResponse<UserEntity> response = service.getObject(temp, dataType);
         if (response.isSuccess()){
-            MainApplication.workspace("Главная");
+            MainApplication.workspace("Автоматизированная информационная система для работы с клиентами компании «Белгорстрах»");
             return response.getData();
         }else{
             alerts.wrongUser();

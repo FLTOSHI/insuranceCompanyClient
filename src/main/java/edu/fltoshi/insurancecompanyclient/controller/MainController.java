@@ -22,6 +22,8 @@ public class MainController {
     ClientService service = new ClientService();
     private boolean addFlag = false;
 
+    private static String guidePath = "edu/fltoshi/insurancecompanyclient/help/information/helpRSK.chm";
+
     // Инициалазция окна
     @FXML
     private void initialize() {
@@ -140,7 +142,7 @@ public class MainController {
     }
 
     @FXML
-    void helpAction(ActionEvent event) throws IOException {
-        Runtime.getRuntime().exec("hh.exe C:\\Users\\User\\Desktop\\primeMOY\\help.chm");
+    protected void helpAction(ActionEvent event) throws IOException {
+        Runtime.getRuntime().exec("hh.exe C:\\Users\\User\\Documents\\helpRSK.chm");
     }
 }

@@ -39,7 +39,7 @@ public class LoginController {
             service.checkUserData(tempUser);
         }catch (Exception e){
             alerts.wrongInput(e);
-            MainApplication.showDialog("login-view.fxml", "Авторизация в систему");
+            MainApplication.showDialog("login-view.fxml", "Авторизация в системе");
         }
         Stage stage = (Stage) enterButton.getScene().getWindow();
         stage.close();

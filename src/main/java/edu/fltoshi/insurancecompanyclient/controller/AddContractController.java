@@ -82,7 +82,6 @@ public class AddContractController {
         return temp;
     }
 
-
     public void ContractAddAction(javafx.event.ActionEvent actionEvent) {
         try {
             ContractEntity contract = new ContractEntity();

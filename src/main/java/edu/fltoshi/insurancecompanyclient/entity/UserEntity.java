@@ -18,7 +18,7 @@ public class UserEntity {
 
     @Override
     public String toString() {
-        return username;
+        return username + "" + password;
     }
 
     @Override
@@ -27,4 +27,5 @@ public class UserEntity {
         if (!(o instanceof UserEntity that)) return false;
         return Objects.equals(getUsername(), that.getUsername()) && Objects.equals(getPassword(), that.getPassword());
     }
+
 }
